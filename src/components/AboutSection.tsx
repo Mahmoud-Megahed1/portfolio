@@ -41,7 +41,7 @@ const AboutSection = () => {
                 <CardContent className="p-8">
                   <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6">
                     <img 
-                      src="/lovable-uploads/612253f3-1873-447c-b42f-2552818fe736.png"
+                      src="/photos/612253f3-1873-447c-b42f-2552818fe736.png"
                       alt="Mahmoud Mohamed Megahed - Professional Photo"
                       className="w-full h-full object-cover"
                     />

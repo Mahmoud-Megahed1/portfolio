@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Globe, Database, Code } from 'lucide-react';
+import { ExternalLink, Github, Globe, Database, Code, ShoppingBag, Layers } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -7,29 +7,38 @@ const PortfolioSection = () => {
     {
       title: 'Arcade Electronics (E-Commerce)',
       description: 'Enterprise e-commerce platform for gaming & electronics with real-time cart, order lifecycle management, admin dashboard, and cyberpunk theme.',
-      image: Database,
+      image: ShoppingBag,
       tech: ['.NET 10', 'ASP.NET Core', 'EF Core', 'SQL Server'],
       category: 'Fullstack',
       github: 'https://github.com/Mahmoud-Megahed1/Arcade-Electronics',
       link: 'https://github.com/Mahmoud-Megahed1/Arcade-Electronics'
     },
     {
-      title: 'Landing Page Project',
-      description: 'Modern, responsive landing page with smooth animations and optimized performance. Built with React and Tailwind CSS.',
-      image: Globe,
-      tech: ['React', 'Tailwind CSS', 'TypeScript'],
-      category: 'Frontend',
-      github: 'https://github.com/Mahmoud-Megahed1',
-      link: '#'
+      title: 'On-Demand Delivery & Logistics Platform',
+      description: 'Enterprise multi-vendor logistics and dispatching system with real-time tracking, Stripe and PayPal integration, and hybrid data persistence.',
+      image: Database,
+      tech: ['Laravel', 'Firebase', 'MongoDB', 'MySQL', 'Stripe'],
+      category: 'Backend',
+      github: 'https://github.com/Mahmoud-Megahed1/on-demand-delivery-platform',
+      link: 'https://github.com/Mahmoud-Megahed1/on-demand-delivery-platform'
     },
     {
-      title: 'Clean Architecture Web API',
-      description: 'Scalable RESTful API with CQRS, MediatR, JWT authentication, and comprehensive integration testing.',
-      image: Code,
-      tech: ['ASP.NET Core', 'Clean Architecture', 'CQRS', 'JWT'],
-      category: 'Backend',
-      github: 'https://github.com/Mahmoud-Megahed1',
-      link: '#'
+      title: 'Care Clinic Headless Storefront',
+      description: 'Modern headless e-commerce storefront for medical wellness with Shopify Storefront API integration, slide-out cart drawer, and native RTL support.',
+      image: Globe,
+      tech: ['React 19', 'Vite', 'Tailwind CSS', 'Shopify API'],
+      category: 'Frontend',
+      github: 'https://github.com/Mahmoud-Megahed1/care-clinic-headless-storefront',
+      link: 'https://github.com/Mahmoud-Megahed1/care-clinic-headless-storefront'
+    },
+    {
+      title: 'Arcade DEPI Architecture Deck',
+      description: 'Interactive presentation deck and architectural schema diagrams created for the Digital Egypt Pioneers Initiative (DEPI / MCIT) capstone evaluation.',
+      image: Layers,
+      tech: ['JavaScript', 'HTML5', 'CSS3', 'Database Architecture'],
+      category: 'Fullstack',
+      github: 'https://github.com/Mahmoud-Megahed1/arcade-depi-presentation',
+      link: 'https://github.com/Mahmoud-Megahed1/arcade-depi-presentation'
     }
   ];
 

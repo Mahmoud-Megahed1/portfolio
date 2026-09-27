@@ -1,4 +1,4 @@
-import { User, Code, Database, Globe } from 'lucide-react';
+import { User, Code, Database, Globe, Trophy } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AboutSection = () => {
@@ -15,8 +15,13 @@ const AboutSection = () => {
     },
     {
       icon: Globe,
-      title: 'API Development',
-      description: 'RESTful APIs, Microservices'
+      title: 'API & Architecture',
+      description: 'RESTful APIs, Clean Architecture'
+    },
+    {
+      icon: Trophy,
+      title: 'Problem Solving',
+      description: 'ECPC Finalist, Advanced Algorithms'
     }
   ];
 
@@ -48,7 +53,7 @@ const AboutSection = () => {
                   </div>
                   <div className="text-center">
                     <h3 className="text-xl font-semibold mb-2">Mahmoud Mohamed Megahed</h3>
-                    <p className="text-foreground/60">.NET Developer & Freelancer</p>
+                    <p className="text-foreground/60">Software Engineer & .NET Specialist</p>
                   </div>
                 </CardContent>
               </Card>
@@ -59,13 +64,13 @@ const AboutSection = () => {
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-6">My Story</h3>
                 <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                  I am a passionate Fullstack .NET Developer who enjoys building scalable backend systems 
-                  and modern web applications. Currently focused on freelancing, helping clients with 
-                  landing page development, SQL queries, data entry tasks, and API integration.
+                  I am a Software Engineer and Fullstack .NET Developer with a solid background in Competitive Programming (ECPC Finalist). 
+                  I specialize in designing and engineering scalable enterprise systems, robust RESTful APIs, and maintainable architectures 
+                  using ASP.NET Core, EF Core, and modern frontend frameworks.
                 </p>
                 <p className="text-lg text-foreground/80 leading-relaxed">
-                  I'm always eager to learn, take on new challenges, and collaborate with businesses 
-                  and developers worldwide. Let's build something amazing together!
+                  My competitive programming journey trained me to optimize algorithm complexity, master data structures, 
+                  and write clean, battle-tested code. I am passionate about Clean Architecture, performance optimization, and collaborating on high-impact projects.
                 </p>
               </div>
 

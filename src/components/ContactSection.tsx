@@ -47,8 +47,8 @@ const ContactSection = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'mahmoudmegahedd',
-      link: 'https://www.linkedin.com/in/mahmoudmegahedd/'
+      value: 'mahmoud---megahed',
+      link: 'https://www.linkedin.com/in/mahmoud---megahed/'
     },
     {
       icon: Github,

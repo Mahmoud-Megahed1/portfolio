@@ -33,10 +33,10 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          {/* Greeting */}
+          {/* Greeting / Badge */}
           <div className="mb-6">
-            <span className="inline-block px-4 py-2 rounded-full glass text-sm font-medium mb-4 animate-bounce-subtle">
-              👋 Welcome to my portfolio
+            <span className="inline-block px-4 py-2 rounded-full glass text-sm font-medium mb-4 animate-bounce-subtle text-gradient">
+              🏆 ECPC Finalist | Software Engineer & .NET Developer
             </span>
           </div>
 
@@ -50,13 +50,13 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <h2 className="text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-foreground/90">
-            A .NET DEVELOPER & Freelancer
+            Fullstack .NET Developer & Problem Solver
           </h2>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed">
-            I help businesses build scalable websites, RESTful APIs, and efficient databases. 
-            Let's turn your ideas into powerful digital solutions.
+            Specializing in scalable enterprise systems, Clean Architecture, RESTful APIs, and efficient databases.
+            Combining competitive programming problem-solving with robust software engineering.
           </p>
 
           {/* CTA Buttons */}

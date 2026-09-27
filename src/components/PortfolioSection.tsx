@@ -5,27 +5,30 @@ import { Button } from '@/components/ui/button';
 const PortfolioSection = () => {
   const projects = [
     {
+      title: 'Arcade Electronics (E-Commerce)',
+      description: 'Enterprise e-commerce platform for gaming & electronics with real-time cart, order lifecycle management, admin dashboard, and cyberpunk theme.',
+      image: Database,
+      tech: ['.NET 10', 'ASP.NET Core', 'EF Core', 'SQL Server'],
+      category: 'Fullstack',
+      github: 'https://github.com/Mahmoud-Megahed1/Arcade-Electronics',
+      link: 'https://github.com/Mahmoud-Megahed1/Arcade-Electronics'
+    },
+    {
       title: 'Landing Page Project',
       description: 'Modern, responsive landing page with smooth animations and optimized performance. Built with React and Tailwind CSS.',
       image: Globe,
       tech: ['React', 'Tailwind CSS', 'TypeScript'],
       category: 'Frontend',
+      github: 'https://github.com/Mahmoud-Megahed1',
       link: '#'
     },
     {
-      title: 'CRUD System (.NET + SQL)',
-      description: 'Full-stack CRUD application with .NET Core backend, SQL Server database, and modern React frontend.',
-      image: Database,
-      tech: ['.NET Core', 'SQL Server', 'React'],
-      category: 'Fullstack',
-      link: '#'
-    },
-    {
-      title: 'Blog RESTful API',
-      description: 'Scalable RESTful API for blog management with authentication, CRUD operations, and comprehensive documentation.',
+      title: 'Clean Architecture Web API',
+      description: 'Scalable RESTful API with CQRS, MediatR, JWT authentication, and comprehensive integration testing.',
       image: Code,
-      tech: ['ASP.NET Core', 'Entity Framework', 'JWT'],
+      tech: ['ASP.NET Core', 'Clean Architecture', 'CQRS', 'JWT'],
       category: 'Backend',
+      github: 'https://github.com/Mahmoud-Megahed1',
       link: '#'
     }
   ];
@@ -99,11 +102,20 @@ const PortfolioSection = () => {
                   
                   {/* Action Buttons */}
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1 hover-glow">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 hover-glow"
+                      onClick={() => window.open(project.link, '_blank')}
+                    >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
+                      View Project
                     </Button>
-                    <Button size="sm" variant="ghost">
+                    <Button 
+                      size="sm" 
+                      variant="ghost"
+                      onClick={() => window.open(project.github, '_blank')}
+                    >
                       <Github className="w-4 h-4" />
                     </Button>
                   </div>

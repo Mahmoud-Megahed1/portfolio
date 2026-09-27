@@ -16,10 +16,10 @@ const ServicesSection = () => {
       features: ['Database Optimization', 'Query Performance', 'Data Modeling']
     },
     {
-      icon: FileText,
-      title: 'Data Entry & Automation',
-      description: 'Automate repetitive data entry tasks and create systems that streamline your business processes.',
-      features: ['Process Automation', 'Data Validation', 'Bulk Operations']
+      icon: Layers,
+      title: 'Clean Architecture & System Design',
+      description: 'Architect decoupled, maintainable backend systems using Clean Architecture, CQRS with MediatR, and domain-driven design principles.',
+      features: ['Clean Architecture', 'CQRS & MediatR', 'Domain-Driven Design']
     },
     {
       icon: Code,

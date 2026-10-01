@@ -1,92 +1,45 @@
-import { Globe, Database, FileText, Code, Layers, BarChart } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from 'react';
+import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
-const ServicesSection = () => {
-  const services = [
-    {
-      icon: Globe,
-      title: 'Landing Page Development',
-      description: 'Create stunning, responsive landing pages that convert visitors into customers with modern design and optimized performance.',
-      features: ['Responsive Design', 'SEO Optimized', 'Fast Loading']
-    },
-    {
-      icon: Database,
-      title: 'SQL Queries & Database Design',
-      description: 'Design efficient database schemas and write optimized SQL queries for better performance and data integrity.',
-      features: ['Database Optimization', 'Query Performance', 'Data Modeling']
-    },
-    {
-      icon: Layers,
-      title: 'Clean Architecture & System Design',
-      description: 'Architect decoupled, maintainable backend systems using Clean Architecture, CQRS with MediatR, and domain-driven design principles.',
-      features: ['Clean Architecture', 'CQRS & MediatR', 'Domain-Driven Design']
-    },
-    {
-      icon: Code,
-      title: 'RESTful API Development',
-      description: 'Build scalable and secure APIs that power your applications with proper documentation and testing.',
-      features: ['REST Standards', 'Authentication', 'Documentation']
-    },
-    {
-      icon: Layers,
-      title: 'Fullstack .NET Projects',
-      description: 'Complete web applications using .NET Core, from database design to user interface implementation.',
-      features: ['End-to-End Development', 'Modern Architecture', 'Clean Code']
-    },
-    {
-      icon: BarChart,
-      title: 'Performance Optimization',
-      description: 'Optimize existing applications for better performance, scalability, and user experience.',
-      features: ['Code Review', 'Performance Tuning', 'Scalability']
-    }
-  ];
+const services = [
+  { title: 'Landing Page Development', description: 'Create responsive landing pages with modern design and optimized performance.', tags: ['Responsive', 'SEO', 'Performance'] },
+  { title: 'SQL Queries & Database Design', description: 'Design efficient database schemas and write optimized SQL queries.', tags: ['SQL Server', 'Optimization', 'Data Modeling'] },
+  { title: 'Clean Architecture & System Design', description: 'Architect decoupled, maintainable backend systems using Clean Architecture and DDD.', tags: ['Clean Architecture', 'CQRS', 'DDD'] },
+  { title: 'RESTful API Development', description: 'Build scalable and secure APIs with proper documentation and testing.', tags: ['REST', 'Auth', 'Swagger'] },
+  { title: 'Fullstack .NET Projects', description: 'Complete web applications from database design to user interface.', tags: ['.NET Core', 'EF Core', 'React'] },
+  { title: 'Performance Optimization', description: 'Optimize existing applications for better performance and scalability.', tags: ['Profiling', 'Caching', 'Scalability'] },
+];
 
+export default function ServicesSection() {
   return (
-    <section id="services" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              My <span className="text-gradient">Services</span>
-            </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Comprehensive development services to help your business succeed in the digital world
-            </p>
+    <section id="services" className="py-24 sm:py-32 border-t border-canvas-border/20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <ScrollReveal>
+          <div className="text-left">
+            <h2 className="font-display font-medium text-3xl sm:text-4xl text-content-primary tracking-tight">What I Can Build for You</h2>
           </div>
+        </ScrollReveal>
 
-          {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="glass hover-lift group animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center group-hover:shadow-glow transition-smooth">
-                    <service.icon className="w-8 h-8 text-primary" />
+        <div className="mt-12 flex flex-col">
+          {services.map((service, index) => (
+            <ScrollReveal key={index} delay={index * 0.08}>
+              <div className="group border-b border-canvas-border/20 py-6 hover:bg-canvas-surface/30 transition-all duration-300 rounded-lg px-4 -mx-4 cursor-default">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex flex-col">
+                    <h3 className="font-display text-xl sm:text-2xl font-normal text-content-primary group-hover:text-accent transition-colors duration-200">{service.title}</h3>
+                    <p className="font-body text-sm text-content-secondary mt-1 max-w-[50ch]">{service.description}</p>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-gradient transition-smooth">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-foreground/70 mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-foreground/60">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                        {feature}
-                      </li>
+                  <div className="flex flex-wrap gap-2 shrink-0">
+                    {service.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="text-xs font-body px-2.5 py-1 rounded bg-canvas-elevated text-content-secondary border border-canvas-border/40">{tag}</span>
                     ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default ServicesSection;
+}

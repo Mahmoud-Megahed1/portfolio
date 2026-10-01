@@ -2,62 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* =============================================================
+   IMPECCABLE DESIGN SYSTEM
+   Tinted neutrals, OKLCH-inspired palette, Two-Face typography
+   ============================================================= */
 
 @layer base {
   :root {
-    /* Dark theme base colors */
-    --background: 220 15% 8%;
-    --foreground: 220 10% 95%;
+    /* ── Canvas: Navy-tinted dark surfaces (NOT pure black) ── */
+    --canvas-base: 230 25% 7%;
+    --canvas-surface: 228 22% 11%;
+    --canvas-elevated: 226 20% 15%;
+    --canvas-border: 225 18% 20%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 220 10% 95%;
+    /* ── Content hierarchy ── */
+    --content-primary: 220 15% 95%;
+    --content-secondary: 222 12% 68%;
+    --content-muted: 224 10% 45%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 10% 95%;
+    /* ── Accent: Crisp teal (NOT the AI purple-blue) ── */
+    --accent: 172 66% 50%;
+    --accent-subtle: 172 66% 50%;
+    --accent-foreground: 230 25% 7%;
 
-    /* Primary: Deep Blue */
-    --primary: 220 70% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Secondary: Purple */
-    --secondary: 270 70% 50%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 65%;
-
-    /* Accent: Gradient blend */
-    --accent: 245 70% 55%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 70% 55%;
+    /* ── Shadcn compatibility tokens ── */
+    --background: var(--canvas-base);
+    --foreground: var(--content-primary);
+    --card: var(--canvas-surface);
+    --card-foreground: var(--content-primary);
+    --popover: var(--canvas-surface);
+    --popover-foreground: var(--content-primary);
+    --primary: var(--accent);
+    --primary-foreground: var(--accent-foreground);
+    --secondary: var(--canvas-elevated);
+    --secondary-foreground: var(--content-primary);
+    --muted: var(--canvas-elevated);
+    --muted-foreground: var(--content-secondary);
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 220 70% 50%;
-
-    --radius: 0.75rem;
-
-    /* Custom portfolio colors */
-    --hero-gradient-start: 220 70% 50%;
-    --hero-gradient-end: 270 70% 50%;
-    --section-bg: 220 15% 10%;
-    --nav-bg: 220 15% 8%;
-    --text-gradient-start: 220 70% 60%;
-    --text-gradient-end: 270 70% 60%;
-
-    /* Shadows */
-    --shadow-primary: 0 10px 30px -10px hsl(220 70% 50% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(220 15% 0% / 0.4);
-    --shadow-glow: 0 0 40px hsl(220 70% 50% / 0.2);
-
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --border: var(--canvas-border);
+    --input: var(--canvas-surface);
+    --ring: var(--accent);
+    --radius: 0.5rem;
   }
 }
 
@@ -66,65 +52,162 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ── Selection color ── */
+  ::selection {
+    background: hsl(var(--accent) / 0.25);
+    color: hsl(var(--content-primary));
   }
 }
 
 @layer components {
-  /* Hero gradient text */
-  .text-gradient {
-    @apply bg-gradient-to-r from-[hsl(var(--text-gradient-start))] to-[hsl(var(--text-gradient-end))] bg-clip-text text-transparent;
+  /* ── Exponential easing curves (Impeccable standard) ── */
+  .ease-out-expo {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ease-out-quint {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Hero gradient background */
-  .bg-hero-gradient {
-    @apply bg-gradient-to-br from-[hsl(var(--hero-gradient-start))] to-[hsl(var(--hero-gradient-end))];
+  /* ── Section divider (subtle rule, not heavy borders) ── */
+  .section-divider {
+    @apply border-t;
+    border-color: hsl(var(--canvas-border) / 0.5);
   }
 
-  /* Section background */
-  .bg-section {
-    @apply bg-[hsl(var(--section-bg))];
+  /* ── Accent text (single color, NOT gradient-on-everything) ── */
+  .text-accent-glow {
+    color: hsl(var(--accent));
+    text-shadow: 0 0 40px hsl(var(--accent) / 0.3);
   }
 
-  /* Glass effect */
-  .glass {
-    @apply bg-card/50 backdrop-blur-sm border border-border;
+  /* ── Subtle hover for interactive elements ── */
+  .hover-accent {
+    @apply transition-colors duration-200;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hover-accent:hover {
+    color: hsl(var(--accent));
   }
 
-  /* Smooth animations */
-  .transition-smooth {
-    transition: var(--transition-smooth);
+  /* ── Tag/badge pill ── */
+  .tag {
+    @apply text-xs font-mono px-2.5 py-1 rounded;
+    background: hsl(var(--canvas-elevated));
+    color: hsl(var(--content-secondary));
+    border: 1px solid hsl(var(--canvas-border) / 0.5);
   }
 
-  .transition-spring {
-    transition: var(--transition-spring);
+  /* ── Project card: subtle surface, no heavy glass ── */
+  .surface-card {
+    background: hsl(var(--canvas-surface));
+    border: 1px solid hsl(var(--canvas-border) / 0.4);
+    border-radius: var(--radius);
+  }
+  .surface-card:hover {
+    border-color: hsl(var(--accent) / 0.3);
+    background: hsl(var(--canvas-elevated) / 0.6);
   }
 
-  /* Custom shadows */
-  .shadow-primary {
-    box-shadow: var(--shadow-primary);
+  /* ── Reduced motion respect ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
+}
 
-  .shadow-card {
-    box-shadow: var(--shadow-card);
+/* ── Stagger animation for scroll reveals ── */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
+.animate-reveal {
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 
-  /* Hover effects */
-  .hover-lift {
-    @apply transition-spring hover:scale-105 hover:shadow-glow;
-  }
+.animate-reveal-delay-1 { animation-delay: 0.05s; }
+.animate-reveal-delay-2 { animation-delay: 0.1s; }
+.animate-reveal-delay-3 { animation-delay: 0.15s; }
+.animate-reveal-delay-4 { animation-delay: 0.2s; }
+.animate-reveal-delay-5 { animation-delay: 0.25s; }
+.animate-reveal-delay-6 { animation-delay: 0.3s; }
 
-  .hover-glow {
-    @apply transition-smooth hover:shadow-primary;
-  }
+/* =============================================================
+   IMPECCABLE: Browser surfaces — "the parts you did not draw"
+   Text selection, caret, scrollbar, focus rings, underlines
+   ============================================================= */
+
+/* Text selection — accent tinted */
+::selection {
+  background: hsl(172 66% 50% / 0.2);
+  color: hsl(220 15% 95%);
+}
+
+/* Caret */
+input, textarea {
+  caret-color: hsl(172 66% 50%);
+}
+
+/* Focus rings — accent, not browser blue */
+:focus-visible {
+  outline: 2px solid hsl(172 66% 50% / 0.5);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar — tinted, thin */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(230 25% 7%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(225 18% 20%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(172 66% 50% / 0.4);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(225 18% 20%) hsl(230 25% 7%);
+}
+
+/* Link underline offset */
+a {
+  text-underline-offset: 3px;
+}
+
+/* Tabular numerals for stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scroll indicator dot */
+@keyframes scroll-dot {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
 }

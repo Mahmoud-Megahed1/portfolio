@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { SpotlightCard } from '@/components/ui/spotlight';
 import { SiDotnet } from '@icons-pack/react-simple-icons';
-import { Database, Layers } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
 interface ExperienceItem {
   role: string;
@@ -13,6 +13,26 @@ interface ExperienceItem {
 }
 
 const experiences: ExperienceItem[] = [
+  {
+    role: 'Full-Stack .NET Intern',
+    institution: 'DEPI, Egypt',
+    period: 'June 2025 – Dec 2026',
+    highlights: [
+      'Developed enterprise-level full-stack web applications using ASP.NET Core, C#, and Entity Framework, contributing to multiple production deployments.',
+      'Collaborated with cross-functional teams to integrate Blazor/React interfaces with RESTful APIs, improving system responsiveness by 40%.',
+      'Optimized SQL Server database queries and data models, resulting in 25% improvement in application performance.',
+      'Applied Agile methodologies and Git version control in real-world projects, participating in daily standups and sprint planning.',
+    ],
+    skills: [
+      'ASP.NET Core',
+      'C#',
+      'Entity Framework',
+      'RESTful APIs',
+      'Blazor / React',
+      'SQL Server',
+      'Agile / Git',
+    ],
+  },
   {
     role: 'Full Stack .NET Workshop Participant',
     institution: 'Information Technology Institute (ITI), Egypt',
@@ -43,14 +63,14 @@ export function ExperienceSection() {
               Experience & Training
             </h2>
             <p className="font-body text-base text-content-secondary mt-4 max-w-[50ch]">
-              Intensive professional programs and industry-led mentorship bridging theoretical foundation with production-grade engineering.
+              Professional programs, internships, and industry-led mentorship bridging theoretical foundation with production-grade engineering.
             </p>
           </div>
         </ScrollReveal>
 
         <div className="mt-12 space-y-6">
           {experiences.map((exp, idx) => (
-            <ScrollReveal key={idx} delay={0.1}>
+            <ScrollReveal key={idx} delay={idx * 0.1}>
               <SpotlightCard className="p-8 sm:p-10">
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="space-y-2">

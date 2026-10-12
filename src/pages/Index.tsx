@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
+import { ExperienceSection } from '@/components/ExperienceSection';
 import ServicesSection from '@/components/ServicesSection';
 import { PortfolioSection } from '@/components/PortfolioSection';
 import { ContactSection } from '@/components/ContactSection';
@@ -31,6 +32,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <AboutSection />
+      <ExperienceSection />
       <ServicesSection />
       <PortfolioSection />
       <ContactSection />

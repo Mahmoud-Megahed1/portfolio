@@ -3,6 +3,7 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { Mail, Linkedin, Github, ExternalLink, Send, Copy, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
+import { Globe } from '@/components/ui/globe';
 
 const contactLinks = [
   { icon: Mail, label: 'Email', value: 'mahmoudmaghed30@gmail.com', href: 'mailto:mahmoudmaghed30@gmail.com', copyable: true },
@@ -109,8 +110,8 @@ export function ContactSection() {
                 </a>
               ))}
 
-              <div className="mt-4 p-5 rounded-xl bg-canvas-surface/40 border border-canvas-border/30">
-                <div className="flex items-center gap-2">
+              <div className="mt-4 p-5 rounded-2xl bg-canvas-surface/60 border border-canvas-border/40 overflow-hidden relative shadow-lg">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
@@ -119,9 +120,12 @@ export function ContactSection() {
                     Available for Immediate Onboarding
                   </span>
                 </div>
-                <p className="font-body text-xs text-content-secondary mt-2 leading-relaxed">
+                <p className="font-body text-xs text-content-secondary leading-relaxed">
                   Based in Damietta, Egypt • Available for remote worldwide & on-site engagements.
                 </p>
+                <div className="w-full h-48 mt-2 flex items-center justify-center overflow-hidden">
+                  <Globe className="w-48 h-48" />
+                </div>
               </div>
             </div>
           </ScrollReveal>

@@ -71,8 +71,8 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'display': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-				'body': ['"DM Sans"', 'system-ui', 'sans-serif'],
+				'display': ['"Clash Display"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+				'body': ['"Satoshi"', '"DM Sans"', 'system-ui', 'sans-serif'],
 			},
 			transitionTimingFunction: {
 				'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',

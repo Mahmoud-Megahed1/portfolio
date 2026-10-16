@@ -110,21 +110,26 @@ export function ContactSection() {
                 </a>
               ))}
 
-              <div className="mt-4 p-5 rounded-2xl bg-canvas-surface/60 border border-canvas-border/40 overflow-hidden relative shadow-lg">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                  </span>
-                  <span className="font-body text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-                    Available for Immediate Onboarding
+              <div className="mt-4 p-6 rounded-2xl bg-canvas-surface/70 border border-canvas-border/40 overflow-hidden relative shadow-xl">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                    </span>
+                    <span className="font-body text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                      Available for Immediate Onboarding
+                    </span>
+                  </div>
+                  <span className="font-body text-[10px] text-content-muted border border-canvas-border/40 px-2 py-0.5 rounded-full">
+                    Drag to rotate 🌍
                   </span>
                 </div>
                 <p className="font-body text-xs text-content-secondary leading-relaxed">
-                  Based in Damietta, Egypt • Available for remote worldwide & on-site engagements.
+                  Based in Damietta, Egypt • Pinpointed for remote worldwide & on-site engagements.
                 </p>
-                <div className="w-full h-48 mt-2 flex items-center justify-center overflow-hidden">
-                  <Globe className="w-48 h-48" />
+                <div className="w-full max-w-[280px] mx-auto mt-4 aspect-square flex items-center justify-center">
+                  <Globe className="w-full h-full" />
                 </div>
               </div>
             </div>

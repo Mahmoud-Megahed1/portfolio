@@ -324,7 +324,7 @@ export function ArchitectureCore3D({ className }: ArchitectureCore3DProps) {
 
       <div className="absolute top-3 right-3 pointer-events-none">
         <span className="font-mono text-[10px] text-content-muted/80 border border-canvas-border/50 bg-canvas-base/80 px-2 py-0.5 rounded-full backdrop-blur-sm">
-          Interactive 3D WebGL
+          Distributed Architecture
         </span>
       </div>
 

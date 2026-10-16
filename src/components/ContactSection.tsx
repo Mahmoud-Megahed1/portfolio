@@ -123,7 +123,7 @@ export function ContactSection() {
                   </div>
 
                   <span className="font-mono text-[11px] text-accent/90 border border-accent/30 bg-accent/10 px-2.5 py-0.5 rounded-full font-medium">
-                    Three.js Interactive 3D
+                    Interactive System Core
                   </span>
                 </div>
 
@@ -144,7 +144,7 @@ export function ContactSection() {
                     <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
                     <span>CQRS & Event Streams</span>
                   </div>
-                  <span className="text-content-muted/70 font-mono">Three.js 60FPS</span>
+                  <span className="text-content-muted/70 font-mono">60 FPS • Realtime Engine</span>
                 </div>
               </div>
             </div>

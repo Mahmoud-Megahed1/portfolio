@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { ScrollProgress } from '@/components/ui/scroll-progress';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -29,6 +30,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-canvas-base">
+      <ScrollProgress />
       <Navigation />
       <HeroSection />
       <AboutSection />

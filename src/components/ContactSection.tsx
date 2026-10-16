@@ -1,27 +1,43 @@
 import React, { useState } from 'react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { Mail, Linkedin, Github, ExternalLink, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, ExternalLink, Send, Copy, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 const contactLinks = [
-  { icon: Mail, label: 'Email', value: 'mahmoudmaghed30@gmail.com', href: 'mailto:mahmoudmaghed30@gmail.com' },
-  { icon: Linkedin, label: 'LinkedIn', value: 'mahmoud---megahed', href: 'https://linkedin.com/in/mahmoud---megahed' },
-  { icon: Github, label: 'GitHub', value: 'Mahmoud-Megahed1', href: 'https://github.com/Mahmoud-Megahed1' },
-  { icon: ExternalLink, label: 'Khamsat', value: 'mahmoudmegahedd', href: 'https://khamsat.com/user/mahmoudmegahedd' },
+  { icon: Mail, label: 'Email', value: 'mahmoudmaghed30@gmail.com', href: 'mailto:mahmoudmaghed30@gmail.com', copyable: true },
+  { icon: Linkedin, label: 'LinkedIn', value: 'mahmoud---megahed', href: 'https://linkedin.com/in/mahmoud---megahed', copyable: false },
+  { icon: Github, label: 'GitHub', value: 'Mahmoud-Megahed1', href: 'https://github.com/Mahmoud-Megahed1', copyable: false },
+  { icon: ExternalLink, label: 'Khamsat', value: 'mahmoudmegahedd', href: 'https://khamsat.com/user/mahmoudmegahedd', copyable: false },
 ];
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
     setTimeout(() => {
       setStatus('success');
+      toast.success('Message Sent Successfully!', {
+        description: 'Thank you for reaching out. I will get back to you shortly.',
+      });
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
     }, 1000);
+  };
+
+  const handleCopy = (e: React.MouseEvent, text: string, index: number, label: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    toast.success(`${label} copied to clipboard!`, {
+      description: text,
+    });
+    setTimeout(() => setCopiedIndex(null), 2000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -34,21 +50,21 @@ export function ContactSection() {
         <ScrollReveal>
           <div className="max-w-[60ch]">
             <h2 className="font-display font-medium text-3xl sm:text-4xl text-content-primary tracking-tight">Let's Work Together</h2>
-            <p className="font-body text-base text-content-secondary mt-3 max-w-[50ch]">I'm currently available for freelance work and full-time opportunities.</p>
+            <p className="font-body text-base text-content-secondary mt-3 max-w-[50ch]">I'm currently available for freelance work, enterprise contracts, and full-time opportunities.</p>
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           <ScrollReveal delay={0.1}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Name"
-                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-lg px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200" />
-              <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Email"
-                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-lg px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200" />
-              <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Message"
-                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-lg px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200 resize-none" />
+              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your Name"
+                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-xl px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200" />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Your Email Address"
+                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-xl px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200" />
+              <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Your Message or Project Details..."
+                className="w-full bg-canvas-surface border border-canvas-border/40 rounded-xl px-4 py-3 font-body text-sm text-content-primary placeholder:text-content-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/20 transition-all duration-200 resize-none" />
               <motion.button type="submit" disabled={status === 'sending'}
-                className="w-full flex items-center justify-center gap-2 bg-accent text-accent-foreground font-body font-medium text-sm py-3.5 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all duration-200 disabled:opacity-70 shadow-[0_0_15px_hsl(172_66%_50%/0.2)] hover:shadow-[0_0_25px_hsl(172_66%_50%/0.3)] mt-2"
+                className="w-full flex items-center justify-center gap-2 bg-accent text-accent-foreground font-body font-semibold text-sm py-3.5 rounded-xl hover:brightness-110 active:scale-[0.98] transition-all duration-200 disabled:opacity-70 shadow-[0_0_20px_hsl(172_66%_50%/0.25)] hover:shadow-[0_0_30px_hsl(172_66%_50%/0.4)] mt-2"
                 whileTap={{ scale: 0.98 }}
               >
                 {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent!' : <><span>Send Message</span><Send className="w-4 h-4" /></>}
@@ -57,26 +73,55 @@ export function ContactSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {contactLinks.map((link, i) => (
-                <a key={i} href={link.href} target={link.href.startsWith('mailto') ? undefined : '_blank'} rel="noreferrer"
-                  className="flex items-center gap-4 py-3 px-4 -ml-4 rounded-lg hover:bg-canvas-surface/50 transition-all duration-200 group">
-                  <div className="w-10 h-10 rounded-lg bg-canvas-surface flex items-center justify-center border border-canvas-border/30 group-hover:border-accent/30 transition-colors">
-                    <link.icon className="w-5 h-5 text-accent" />
+                <a
+                  key={i}
+                  href={link.href}
+                  target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noreferrer"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-canvas-surface/60 border border-canvas-border/40 hover:border-accent/40 hover:bg-canvas-elevated/70 transition-all duration-200 group"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-lg bg-canvas-elevated flex items-center justify-center border border-canvas-border/40 text-accent group-hover:border-accent/30 transition-colors">
+                      <link.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="font-body text-xs text-content-muted uppercase tracking-wider">{link.label}</div>
+                      <div className="font-body text-sm font-medium text-content-primary group-hover:text-accent transition-colors">{link.value}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-body text-sm font-medium text-content-primary">{link.label}</div>
-                    <div className="font-body text-sm text-content-muted group-hover:text-content-secondary transition-colors">{link.value}</div>
-                  </div>
+
+                  {link.copyable && (
+                    <button
+                      type="button"
+                      onClick={(e) => handleCopy(e, link.value, i, link.label)}
+                      className="p-2 rounded-lg bg-canvas-base border border-canvas-border/50 text-content-muted hover:text-accent hover:border-accent/30 transition-all duration-200"
+                      title="Copy to clipboard"
+                    >
+                      {copiedIndex === i ? (
+                        <Check className="w-4 h-4 text-emerald-400" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </button>
+                  )}
                 </a>
               ))}
 
-              <div className="mt-6 pt-8 border-t border-canvas-border/20">
+              <div className="mt-4 p-5 rounded-xl bg-canvas-surface/40 border border-canvas-border/30">
                 <div className="flex items-center gap-2">
-                  <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
-                  <span className="font-body text-sm font-medium text-emerald-400">Available for Work</span>
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                  </span>
+                  <span className="font-body text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                    Available for Immediate Onboarding
+                  </span>
                 </div>
-                <p className="font-body text-sm text-content-muted mt-2 max-w-[40ch]">Currently accepting new projects and full-time positions.</p>
+                <p className="font-body text-xs text-content-secondary mt-2 leading-relaxed">
+                  Based in Damietta, Egypt • Available for remote worldwide & on-site engagements.
+                </p>
               </div>
             </div>
           </ScrollReveal>

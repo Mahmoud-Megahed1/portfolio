@@ -4,6 +4,8 @@ import { Mail, Linkedin, Github, ExternalLink, Send, Copy, Check } from 'lucide-
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { ArchitectureCore3D } from '@/components/ui/architecture-3d-core';
+import { Globe } from '@/components/ui/globe';
+import { cn } from '@/lib/utils';
 
 const contactLinks = [
   { icon: Mail, label: 'Email', value: 'mahmoudmaghed30@gmail.com', href: 'mailto:mahmoudmaghed30@gmail.com', copyable: true },
@@ -16,6 +18,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [showView, setShowView] = useState<'globe' | 'core'>('globe');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,7 +114,7 @@ export function ContactSection() {
               ))}
 
               <div className="mt-4 p-6 rounded-2xl bg-canvas-surface/80 border border-canvas-border/50 overflow-hidden relative shadow-2xl backdrop-blur-sm">
-                <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -121,28 +124,74 @@ export function ContactSection() {
                       Available for Immediate Onboarding
                     </span>
                   </div>
-                  <span className="font-body text-[11px] text-accent/90 border border-accent/30 bg-accent/10 px-2.5 py-0.5 rounded-full font-medium">
-                    Drag & Orbit 3D ✨
-                  </span>
+
+                  {/* Dual Mode Switcher: Globe vs Three.js Architecture Core */}
+                  <div className="flex items-center gap-1 p-0.5 rounded-lg bg-canvas-base border border-canvas-border/50 self-start sm:self-auto">
+                    <button
+                      type="button"
+                      onClick={() => setShowView('globe')}
+                      className={cn(
+                        "px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200",
+                        showView === 'globe'
+                          ? "bg-accent text-accent-foreground shadow-sm font-semibold"
+                          : "text-content-muted hover:text-content-primary"
+                      )}
+                    >
+                      🌐 Global Reach
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowView('core')}
+                      className={cn(
+                        "px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-200",
+                        showView === 'core'
+                          ? "bg-accent text-accent-foreground shadow-sm font-semibold"
+                          : "text-content-muted hover:text-content-primary"
+                      )}
+                    >
+                      ⚡ 3D Architecture Core
+                    </button>
+                  </div>
                 </div>
+
                 <p className="font-body text-xs text-content-secondary leading-relaxed">
-                  Location: <strong className="text-content-primary">Egypt (UTC+2)</strong> • Open for Remote Worldwide, Enterprise Contracts & Hybrid Engagements.
+                  Base: <strong className="text-content-primary">Egypt (UTC+2)</strong> • Open for Remote Worldwide, Enterprise Contracts & Hybrid Engagements.
                 </p>
 
                 <div className="w-full max-w-[340px] mx-auto mt-2 aspect-square flex items-center justify-center">
-                  <ArchitectureCore3D className="w-full h-full" />
+                  {showView === 'globe' ? (
+                    <Globe className="w-full h-full" />
+                  ) : (
+                    <ArchitectureCore3D className="w-full h-full" />
+                  )}
                 </div>
 
                 <div className="mt-3 pt-3 border-t border-canvas-border/40 flex items-center justify-between text-[11px] text-content-muted font-body">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#00ffcc]" />
-                    <span className="text-content-secondary font-medium">Clean Architecture</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
-                    <span>CQRS & Event Streams</span>
-                  </div>
-                  <span className="text-content-muted/70 font-mono">Three.js 60FPS</span>
+                  {showView === 'globe' ? (
+                    <>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#00ffcc]" />
+                        <span className="text-content-secondary font-medium">Egypt (HQ)</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
+                        <span>Regional & Global Hubs</span>
+                      </div>
+                      <span className="text-content-muted/70 font-mono">WebGL 60FPS</span>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#00ffcc]" />
+                        <span className="text-content-secondary font-medium">Clean Architecture</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
+                        <span>CQRS & Event Streams</span>
+                      </div>
+                      <span className="text-content-muted/70 font-mono">Three.js 60FPS</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

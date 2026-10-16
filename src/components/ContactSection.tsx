@@ -110,7 +110,7 @@ export function ContactSection() {
                 </a>
               ))}
 
-              <div className="mt-4 p-6 rounded-2xl bg-canvas-surface/70 border border-canvas-border/40 overflow-hidden relative shadow-xl">
+              <div className="mt-4 p-6 rounded-2xl bg-canvas-surface/80 border border-canvas-border/50 overflow-hidden relative shadow-2xl backdrop-blur-sm">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
@@ -121,15 +121,28 @@ export function ContactSection() {
                       Available for Immediate Onboarding
                     </span>
                   </div>
-                  <span className="font-body text-[10px] text-content-muted border border-canvas-border/40 px-2 py-0.5 rounded-full">
-                    Drag to rotate 🌍
+                  <span className="font-body text-[11px] text-accent/90 border border-accent/30 bg-accent/10 px-2.5 py-0.5 rounded-full font-medium">
+                    Drag to Rotate 🌍
                   </span>
                 </div>
                 <p className="font-body text-xs text-content-secondary leading-relaxed">
-                  Based in Damietta, Egypt • Pinpointed for remote worldwide & on-site engagements.
+                  HQ: <strong className="text-content-primary">Damietta, Egypt</strong> • Open to remote worldwide & on-site Gulf/MENA contracts.
                 </p>
-                <div className="w-full max-w-[280px] mx-auto mt-4 aspect-square flex items-center justify-center">
+
+                <div className="w-full max-w-[320px] mx-auto mt-2 aspect-square flex items-center justify-center">
                   <Globe className="w-full h-full" />
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-canvas-border/40 flex items-center justify-between text-[11px] text-content-muted font-body">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#00ffcc]" />
+                    <span className="text-content-secondary font-medium">Damietta (HQ)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#40ccff]" />
+                    <span>Regional & Global Hubs</span>
+                  </div>
+                  <span className="text-content-muted/70">WebGL 60FPS</span>
                 </div>
               </div>
             </div>

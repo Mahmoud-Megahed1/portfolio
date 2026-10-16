@@ -43,7 +43,7 @@ export function Spotlight({ className, fill = "white" }: SpotlightProps) {
         className
       )}
       style={{
-        background: useMotionTemplate`radial-gradient(600px circle at ${springX}px ${springY}px, ${fill}15, transparent 65%)`,
+        background: useMotionTemplate`radial-gradient(800px circle at ${springX}px ${springY}px, hsl(172 66% 50% / 0.10), transparent 65%)`,
       }}
     />
   );
@@ -79,7 +79,7 @@ export function SpotlightCard({ children, className, spotlightColor = "hsl(172 6
       <motion.div
         className="pointer-events-none absolute -inset-px z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, ${spotlightColor}10, transparent 65%)`,
+          background: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, hsl(172 66% 50% / 0.12), transparent 70%)`,
         }}
       />
       <div className="relative z-10">{children}</div>

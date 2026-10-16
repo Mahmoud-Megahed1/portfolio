@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Menu, X } from 'lucide-react';
 import { ScrambleText } from '@/components/ui/scramble-text';
+import { CommandMenu } from '@/components/CommandMenu';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,7 @@ const navItems = [
 export function Navigation() {
   const navRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [cmdOpen, setCmdOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
 
@@ -77,38 +79,63 @@ export function Navigation() {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map(({ label, href }) => {
-            const id = href.replace('#', '');
-            const isActive = activeSection === id;
-            return (
-              <a
-                key={id}
-                href={href}
-                className={`relative font-body text-sm px-3 py-2 rounded-md transition-colors duration-200 ${
-                  isActive
-                    ? 'text-accent'
-                    : 'text-content-muted hover:text-content-primary'
-                }`}
-              >
-                {label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-px bg-accent" />
-                )}
-              </a>
-            );
-          })}
+        <div className="hidden md:flex items-center gap-2">
+          <div className="flex items-center gap-1 bg-canvas-surface/60 border border-canvas-border/40 p-1 rounded-full backdrop-blur-md">
+            {navItems.map(({ label, href }) => {
+              const id = href.replace('#', '');
+              const isActive = activeSection === id;
+              return (
+                <a
+                  key={id}
+                  href={href}
+                  className={`relative font-body text-xs font-medium px-3.5 py-1.5 rounded-full transition-colors duration-200 ${
+                    isActive
+                      ? 'text-accent font-semibold'
+                      : 'text-content-muted hover:text-content-primary'
+                  }`}
+                >
+                  {label}
+                  {isActive && (
+                    <span className="absolute inset-0 rounded-full bg-accent/10 border border-accent/25 -z-10" />
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Quick Action / Command Palette Button */}
+          <button
+            onClick={() => setCmdOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-canvas-surface/80 border border-canvas-border/50 text-content-muted hover:text-content-primary hover:border-accent/40 hover:bg-canvas-elevated/70 transition-all duration-200 text-xs font-mono"
+            title="Press Ctrl+K to open Command Palette"
+          >
+            <span>Search</span>
+            <kbd className="px-1.5 py-0.5 rounded bg-canvas-elevated text-[10px] border border-canvas-border/60 text-accent">
+              Ctrl K
+            </kbd>
+          </button>
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-content-secondary hover:text-content-primary"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={() => setCmdOpen(true)}
+            className="p-2 rounded-lg bg-canvas-surface border border-canvas-border/50 text-content-muted hover:text-content-primary"
+            aria-label="Open command palette"
+          >
+            <span className="font-mono text-xs text-accent">⌘K</span>
+          </button>
+          <button
+            className="text-content-secondary hover:text-content-primary p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+
+      <CommandMenu open={cmdOpen} onOpenChange={setCmdOpen} />
 
       {/* Mobile dropdown */}
       {isOpen && (

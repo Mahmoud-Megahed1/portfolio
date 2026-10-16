@@ -2,6 +2,7 @@ import React from 'react';
 import { ExternalLink, Github, Monitor, Database } from 'lucide-react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { SpotlightCard } from '@/components/ui/spotlight';
+import { BorderBeam } from '@/components/ui/border-beam';
 import { motion } from 'framer-motion';
 import {
   SiDotnet,
@@ -103,49 +104,56 @@ export function PortfolioSection() {
         {featuredProject && (
           <ScrollReveal delay={0.15}>
             <div className="mt-10 pt-10 border-t border-canvas-border/20">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-5 order-2 lg:order-1">
-                  <span className="font-body text-xs text-accent/70 uppercase tracking-wider block mb-3">
-                    {featuredProject.category}
-                  </span>
-                  <a href={featuredProject.github} target="_blank" rel="noreferrer" className="group block">
-                    <h3 className="font-display text-2xl sm:text-3xl font-normal text-content-primary group-hover:text-accent transition-colors duration-200">
-                      {featuredProject.title}
-                    </h3>
-                  </a>
-                  <p className="font-body text-base text-content-secondary mt-4 leading-relaxed max-w-[60ch]">
-                    {featuredProject.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    {featuredProject.tech.map((tech) => (
-                      <TechTag key={tech} name={tech} />
-                    ))}
-                  </div>
-                  <div className="flex gap-4 mt-8">
-                    <a
-                      href={featuredProject.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 font-body text-sm text-content-primary hover:text-accent transition-colors duration-200"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>View Repository</span>
+              <div className="relative rounded-2xl border border-canvas-border/40 bg-canvas-surface/70 backdrop-blur-md p-6 sm:p-10 overflow-hidden shadow-xl">
+                <BorderBeam size={100} duration={8} colorFrom="hsl(172 66% 50%)" colorTo="hsl(217 91% 60%)" />
+                
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                  <div className="lg:col-span-5 order-2 lg:order-1">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/25 text-accent font-body text-xs font-semibold uppercase tracking-wider mb-4">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      Featured Project • {featuredProject.category}
+                    </div>
+                    <a href={featuredProject.github} target="_blank" rel="noreferrer" className="group block">
+                      <h3 className="font-display text-2xl sm:text-3xl font-semibold text-content-primary group-hover:text-accent transition-colors duration-200">
+                        {featuredProject.title}
+                      </h3>
                     </a>
+                    <p className="font-body text-base text-content-secondary mt-4 leading-relaxed max-w-[60ch]">
+                      {featuredProject.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-6">
+                      {featuredProject.tech.map((tech) => (
+                        <TechTag key={tech} name={tech} />
+                      ))}
+                    </div>
+                    <div className="flex gap-4 mt-8">
+                      <motion.a
+                        href={featuredProject.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="flex items-center gap-2 font-body text-sm px-5 py-2.5 rounded-xl bg-accent text-accent-foreground font-semibold hover:brightness-110 shadow-[0_0_20px_hsl(172_66%_50%/0.25)] transition-all duration-200"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span>View Repository</span>
+                      </motion.a>
+                    </div>
                   </div>
-                </div>
-                <div className="lg:col-span-7 order-1 lg:order-2">
-                  <div className="rounded-xl border border-canvas-border/30 overflow-hidden bg-canvas-surface">
-                    <video
-                      src="/videos/arcade-demo.mp4"
-                      controls
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-auto rounded-xl"
-                      poster=""
-                    >
-                      Your browser does not support the video tag.
-                    </video>
+                  <div className="lg:col-span-7 order-1 lg:order-2">
+                    <div className="relative rounded-xl border border-canvas-border/40 overflow-hidden bg-canvas-base shadow-2xl">
+                      <video
+                        src="/videos/arcade-demo.mp4"
+                        controls
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-auto rounded-xl"
+                        poster=""
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
                 </div>
               </div>

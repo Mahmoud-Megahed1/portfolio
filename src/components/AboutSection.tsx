@@ -53,11 +53,18 @@ export default function AboutSection() {
 
             <ScrollReveal delay={0.3}>
               <div className="mt-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {skills.map((skill, index) => (
-                    <div key={index} className="flex items-center gap-3 group cursor-default">
-                      <span className="text-accent/70 group-hover:text-accent transition-colors duration-200">{skill.icon}</span>
-                      <span className="font-body text-sm text-content-secondary group-hover:text-content-primary transition-colors duration-200">{skill.name}</span>
+                    <div
+                      key={index}
+                      className="flex items-center gap-3.5 p-3 rounded-xl bg-canvas-surface/80 border border-canvas-border/40 hover:border-accent/40 hover:bg-canvas-elevated/70 transition-all duration-200 group cursor-default shadow-sm"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-canvas-elevated flex items-center justify-center border border-canvas-border/50 text-accent/80 group-hover:text-accent group-hover:border-accent/30 transition-colors">
+                        {skill.icon}
+                      </div>
+                      <span className="font-body text-sm font-medium text-content-secondary group-hover:text-content-primary transition-colors duration-200">
+                        {skill.name}
+                      </span>
                     </div>
                   ))}
                 </div>

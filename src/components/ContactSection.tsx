@@ -3,7 +3,7 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { Mail, Linkedin, Github, ExternalLink, Send, Copy, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
-import { Globe } from '@/components/ui/globe';
+import { ArchitectureCore3D } from '@/components/ui/architecture-3d-core';
 
 const contactLinks = [
   { icon: Mail, label: 'Email', value: 'mahmoudmaghed30@gmail.com', href: 'mailto:mahmoudmaghed30@gmail.com', copyable: true },
@@ -122,27 +122,27 @@ export function ContactSection() {
                     </span>
                   </div>
                   <span className="font-body text-[11px] text-accent/90 border border-accent/30 bg-accent/10 px-2.5 py-0.5 rounded-full font-medium">
-                    Drag to Rotate 🌍
+                    Drag & Orbit 3D ✨
                   </span>
                 </div>
                 <p className="font-body text-xs text-content-secondary leading-relaxed">
-                  HQ: <strong className="text-content-primary">Damietta, Egypt</strong> • Open to remote worldwide & on-site Gulf/MENA contracts.
+                  Location: <strong className="text-content-primary">Egypt (UTC+2)</strong> • Open for Remote Worldwide, Enterprise Contracts & Hybrid Engagements.
                 </p>
 
-                <div className="w-full max-w-[320px] mx-auto mt-2 aspect-square flex items-center justify-center">
-                  <Globe className="w-full h-full" />
+                <div className="w-full max-w-[340px] mx-auto mt-2 aspect-square flex items-center justify-center">
+                  <ArchitectureCore3D className="w-full h-full" />
                 </div>
 
                 <div className="mt-3 pt-3 border-t border-canvas-border/40 flex items-center justify-between text-[11px] text-content-muted font-body">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#00ffcc]" />
-                    <span className="text-content-secondary font-medium">Damietta (HQ)</span>
+                    <span className="text-content-secondary font-medium">Clean Architecture</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#40ccff]" />
-                    <span>Regional & Global Hubs</span>
+                    <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
+                    <span>CQRS & Event Streams</span>
                   </div>
-                  <span className="text-content-muted/70">WebGL 60FPS</span>
+                  <span className="text-content-muted/70 font-mono">Three.js 60FPS</span>
                 </div>
               </div>
             </div>
